@@ -1,4 +1,3 @@
-
 class Todo {
   final String id;
   final String title;
@@ -26,7 +25,24 @@ class Todos {
     return _items;
   }
 
+  List<Todo> SortByDate(DateTime date) {
+    return _items
+        .where(
+          (element) =>
+              element.date.day == date.day &&
+              element.date.month == date.month &&
+              element.date.year == date.year,
+        )
+        .toList();
+  }
+
   void addTodo(String title, DateTime date) {
     _items.add(Todo(id: "r${_items.length}", title: title, date: date));
+  }
+
+  void deleteTodo(String id) {
+    _items.removeWhere(
+      (element) => element.id == id,
+    );
   }
 }

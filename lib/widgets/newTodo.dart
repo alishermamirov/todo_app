@@ -18,7 +18,6 @@ class _NewtodoState extends State<Newtodo> {
   final _controller = TextEditingController();
   void addTodoDate(BuildContext context) {
     showDatePicker(
-      
       context: context,
       firstDate: DateTime.now(),
       lastDate: DateTime(2025),
@@ -40,15 +39,21 @@ class _NewtodoState extends State<Newtodo> {
       setState(() {
         widget.addTodo(_controller.text, addingTodoDate);
       });
-     
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.fromLTRB(
+          16,
+          16,
+          16,
+          MediaQuery.of(context).viewInsets.bottom > 0
+              ? MediaQuery.of(context).viewInsets.bottom + 20
+              : 100,
+        ),
         child: Column(
           children: [
             TextField(

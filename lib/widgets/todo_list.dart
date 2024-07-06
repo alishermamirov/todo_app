@@ -18,15 +18,29 @@ class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-        // padding: EdgeInsets.symmetric(horizontal: 0),
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return TodoListItem(
-            todo: todos[index],toggleDone: toggleDone,deleteTodo:deleteTodo
-          );
-        },
-      ),
-    );
+        child: todos.length > 0
+            ? ListView.builder(
+                // padding: EdgeInsets.symmetric(horizontal: 0),
+                itemCount: todos.length,
+                itemBuilder: (context, index) {
+                  return TodoListItem(
+                      todo: todos[index],
+                      toggleDone: toggleDone,
+                      deleteTodo: deleteTodo);
+                },
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Rejalar mavjud emas"),
+                  Image.asset(
+                    "assets/to-do-list.png",
+                    width: 300,
+                  ),
+                  SizedBox(
+                    height: 80,
+                  ),
+                ],
+              ));
   }
 }

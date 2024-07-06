@@ -51,24 +51,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void toggleDone(String id) {
     setState(() {
-      todos.items.firstWhere((element) => element.id == id).toggleDone();
+      todos.SortByDate(pickedDate)
+          .firstWhere((element) => element.id == id)
+          .toggleDone();
     });
   }
 
   void deleteTodo(String id) {
     setState(() {
-      todos.items.removeWhere(
-        (element) => element.id == id,
-      );
+      todos.deleteTodo(id);
     });
   }
 
   int get todosCount {
-    return todos.items.length;
+    return todos.SortByDate(pickedDate).length;
   }
 
   int get doneTodoCount {
-    return todos.items
+    return todos.SortByDate(pickedDate)
         .where(
           (element) => element.isDone,
         )
@@ -77,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void showModal(BuildContext context) {
     showModalBottomSheet(
+      isScrollControlled: true,
       isDismissible: false,
       context: context,
       builder: (context) {
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               nextDate: nextDate),
           TodosCounting(todosCount: todosCount, doneTodoCount: doneTodoCount),
           TodoList(
-              todos: todos.items,
+              todos: todos.SortByDate(pickedDate),
               toggleDone: toggleDone,
               deleteTodo: deleteTodo),
         ],
