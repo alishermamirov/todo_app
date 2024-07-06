@@ -1,3 +1,4 @@
+
 class Todo {
   final String id;
   final String title;
@@ -23,5 +24,9 @@ class Todos {
 
   List<Todo> get items {
     return _items;
+  }
+
+  void addTodo(String title, DateTime date) {
+    _items.add(Todo(id: "r${_items.length}", title: title, date: date));
   }
 }
