@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
   intl: ^0.19.0
+  icons_launcher: ^2.1.7
 
 dev_dependencies:
   flutter_test:
@@ -90,3 +91,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+icons_launcher:
+  image_path: "assets/to-do-list.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
