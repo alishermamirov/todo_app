@@ -1,9 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class TodosCounting extends StatelessWidget {
+  final int todosCount;
+  final int doneTodoCount;
   const TodosCounting({
-    super.key,
-  });
+    Key? key,
+    required this.todosCount,
+    required this.doneTodoCount,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class TodosCounting extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "5",
+                todosCount.toString(),
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               Text(
@@ -29,7 +34,7 @@ class TodosCounting extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                "0",
+                doneTodoCount.toString(),
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               Text(
